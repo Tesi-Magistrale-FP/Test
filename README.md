@@ -1,2 +1,2 @@
-# Test PC
-Test su IOTA da PC
+# Test IOTA
+Insieme di test eseguiti sulla rete IOTA.
