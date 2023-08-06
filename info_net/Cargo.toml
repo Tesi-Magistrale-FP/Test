@@ -6,9 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-allow = "0.1.5"
 anyhow = "1.0.72"
 tokio = {version = "1.29.1", features = ["full"]}
-rand = "0.8.5"
-csv = "1.2.2"
 iota-client = { git = "https://github.com/iotaledger/iota.rs", branch = "production" }

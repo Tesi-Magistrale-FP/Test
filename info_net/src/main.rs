@@ -25,5 +25,6 @@ async fn main()  -> Result<()>
     println!("\nInformazioni sul nodo - Mainnet #2\n");
     node_info::node_info::get_node_info(url_mainnet_2.clone()).await?;
 
+    println!();
     Ok(())
 }
