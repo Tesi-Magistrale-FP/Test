@@ -3,7 +3,7 @@ use anyhow::Result;
 mod node_info;
 
 #[tokio::main]
-async fn main()  -> Result<()>
+async fn main() -> Result<()>
 {
     let url_devnet_1: String = String::from("https://api.lb-0.h.chrysalis-devnet.iota.cafe/");
     let url_devnet_2: String = String::from("https://api.lb-1.h.chrysalis-devnet.iota.cafe/");

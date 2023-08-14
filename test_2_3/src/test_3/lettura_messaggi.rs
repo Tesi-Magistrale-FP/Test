@@ -16,10 +16,10 @@ pub async fn test_3(sent_msgs: &Vec<String>, subscriber: Subscriber<Client>, pat
     let inizio = Instant::now();                                                                      	// Inizio misurazione tempo
 
     let retrieved_msgs = subscriber.fetch_all_next_msgs().await;        								// Lettura di tutti i messaggi pubblicati sul canale
-    
+
     let tempo_lettura = format!("{}", inizio.elapsed().as_millis());                                   	// Fine misurazione tempo
    
-    println!("- Fine lettura messaggi dal Tangle");
+    println!("- Fine lettura di {} messaggi dal Tangle", retrieved_msgs.len());
 
     let processed_msgs = retrieved_msgs                    												// Iterazione su tutti i messaggi letti per assicurarsi che matchino con quelli inviati
         .iter()

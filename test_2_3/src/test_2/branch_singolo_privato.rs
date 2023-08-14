@@ -72,8 +72,10 @@ pub async fn test_2(coordinate: Vec<String>, node_url: String, path_ris: String)
         ).await?;
         prev_msg_link = msg_link;                                                                       // Aggiorno il link al messaggio precedente
 
-        tempi.push(format!("{}", inizio.elapsed().as_millis()));                                       	// Fine misurazione tempo
-    
+		let fine = inizio.elapsed().as_millis();														// Fine misurazione tempo
+
+        tempi.push(format!("{}", fine));                                       							// Salvataggio tempo misurato
+
         contatore += 1;                                                                                 // Incremento il contatore
         if(contatore % 10) == 0                                                                         // Ogni 10 transazioni attaccate al Tangle
         {
@@ -91,12 +93,12 @@ pub async fn test_2(coordinate: Vec<String>, node_url: String, path_ris: String)
     println!("\n---------------------------------------");
     if node_url == String::from("https://api.lb-0.h.chrysalis-devnet.iota.cafe/")
     {
-        println!("\nTest 3 - Lettura delle {} transazioni Streams appena pubblicate sul Tangle - Devnet\n", coordinate.len().to_string());
+        println!("\nTest 3 - Lettura delle transazioni Streams appena pubblicate sul Tangle - Devnet\n");
         test_3(&coordinate, subscriber, String::from("./risultati/risultato_t3_devnet.csv")).await?;
     }
     else if node_url == String::from("https://chrysalis-nodes.iota.org")
     {
-        println!("\nTest 3 - Lettura delle {} transazioni Streams appena pubblicate sul Tangle - Mainnet\n", coordinate.len().to_string());
+        println!("\nTest 3 - Lettura delle transazioni Streams appena pubblicate sul Tangle - Mainnet\n");
         test_3(&coordinate, subscriber, String::from("./risultati/risultato_t3_mainnet.csv")).await?;
     }
 

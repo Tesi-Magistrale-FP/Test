@@ -22,7 +22,9 @@ pub async fn test_1(coordinate: Vec<String>, node_url: String, path_ris: String)
 
         iota.message().with_index("TrackApp").with_data(valore.as_bytes().to_vec()).finish().await?;  	// Creo il messaggio con l'index TrackApp, il valore delle coordinate e lo attacco al Tangle
 
-        tempi.push(format!("{}", inizio.elapsed().as_millis()));                                       	// Fine misurazione tempo
+        let fine = inizio.elapsed().as_millis();                            							// Fine misurazione tempo                
+
+        tempi.push(format!("{}", fine));                                       							// Salvataggio tempo registrato
     
         contatore += 1;                                                                                 // Incremento il contatore
         if(contatore % 10) == 0                                                                         // Ogni 10 transazioni attaccate al Tangle
