@@ -47,7 +47,7 @@ pub async fn crea_issuer() -> Result<()>
             .update_identity()
             .create_method()
             .content(MethodContent::GenerateEd25519)
-            .fragment("issuer_pwd")
+            .fragment("auth_vc")
             .apply()
             .await?;
 
@@ -107,7 +107,7 @@ pub async fn crea_verifiable_credentials(username: String, email: String) -> Res
         
         // Firma le credenziali create con il metodo di verifica dell'Issuer
         ISSUER.as_mut().unwrap()
-            .sign("#issuer_pwd", &mut credenziali, ProofOptions::default())
+            .sign("#auth_vc", &mut credenziali, ProofOptions::default())
             .await?;
 
         // Prima di inviare le credenziali all'Holder, l'Issuer deve controllare che alcune proprietà delle credenziali rispettino le aspettative.
