@@ -3,7 +3,7 @@ use anyhow::Result;
 mod test_1;
 mod utility;
 
-const NUM_TRANSAZIONI: i32 = 1;
+const NUM_TRANSAZIONI: i32 = 100;
 
 #[tokio::main]
 async fn main()  -> Result<()>
