@@ -16,7 +16,7 @@ Testare la scrittura e lettura di messaggi privati usando gli IOTA Streams.
 ### PC
 - <strong>CPU:</strong> Intel Core i7-7700HQ - 4 core @2.80 GHz
 - <strong>RAM:</strong> 16 GB DDR4-2400
-- <strong>GPU:</strong> Geforce GTX 1050 - 4 GB 
+- <strong>GPU:</strong> Nvidia Geforce GTX 1050 - 4 GB 
 - <strong>Sistema operativo:</strong> Windows 10 - 64 bit
 
 ### Raspberry Pi 400
