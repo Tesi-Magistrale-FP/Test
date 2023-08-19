@@ -1,4 +1,4 @@
-# Info network
+# Informazioni sulle reti Devnet e Mainnet
 Codice per ottenere le informazioni dettagliate sui load-balancer (endpoint) e sulle relative reti (Mainnet e Devnet) della IOTA Foundation.
 
 ### Mainnet

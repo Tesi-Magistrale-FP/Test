@@ -8,13 +8,13 @@ use iota_streams::{
 };
 
 use crate::utility::scrittura_file::scrivi_file;
-use crate::test_3::lettura_messaggi::test_3;
+use crate::test_4::lettura_messaggi_stream::test_4;
 
 const ALPH9: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ9";
 
-// Funzione per misurare il tempo necessario per creare e attaccare delle transazioni Streams al Tangle su una rete specifica
+// Funzione per effettuare il test 3, che consiste nella misurazione del tempo necessario per creare e scrivere nel canale privato un messaggio Stream
 #[allow(unused_must_use)]
-pub async fn test_2(coordinate: Vec<String>, node_url: String, path_ris: String) -> Result<()> 
+pub async fn test_3(coordinate: Vec<String>, node_url: String, path_ris_s: String, path_ris_l: String) -> Result<()> 
 {
     // Lato Author -> Creazione dell'Author e del canale 
 
@@ -50,6 +50,7 @@ pub async fn test_2(coordinate: Vec<String>, node_url: String, path_ris: String)
     // Lato Author -> Conferma iscrizione del Subscriber al canale e pubblicazione dei messaggi
 
     let sub_address = Address::from_str(&sub_msg_str)?;                                                     
+
     author.receive_subscribe(&sub_address).await?;                                                     	// L'Author procede alla conferma dell'iscrizione del Subscriber
 
     // Ora Subscriber è correttamente iscritto al canale
@@ -57,15 +58,19 @@ pub async fn test_2(coordinate: Vec<String>, node_url: String, path_ris: String)
     // Questo restituisce una tupla contenente i link ai messaggi (linkati al messaggio di annuncio)
     let (keyload_link, _seq) = author.send_keyload_for_everyone(&announcement_link).await?;
 
-    let mut tempi = vec![];                                                                    			// Vettore che conterrà i tempi per ogni transazione
-    let mut contatore = 0;                                                                             	// Contatore che mi indica il numero di transazioni processate
+//////
+	// TEST 3 - SCRITTURA MESSAGGI STREAM
+//////
+
+    let mut tempi = vec![];                                                                    			// Vettore che conterrà i tempi di scrittura per ogni messaggio
+    let mut contatore = 0;                                                                             	// Contatore che indica il numero di transazioni processate
     let mut prev_msg_link = keyload_link;                                                               // Link al messaggio precedente
     let mut iteratore = coordinate.iter();
-    while let Some(valore) = iteratore.next()                                                      		// Per ogni transazione
+    while let Some(valore) = iteratore.next()                                                      		// Per ogni messaggio
     {
         let inizio = Instant::now();                                                               		// Inizio misurazione tempo
 
-        let (msg_link, _seq_link) = author.send_signed_packet(          								// Creo il messaggio Streams cifrato e firmato dall'Author e lo attacco al tangle
+        let (msg_link, _seq_link) = author.send_signed_packet(          								// Creo il messaggio Stream cifrato e firmato dall'Author e lo attacco al tangle
             &prev_msg_link,
             &Bytes::default(),
             &Bytes(valore.as_bytes().to_vec()),
@@ -77,30 +82,32 @@ pub async fn test_2(coordinate: Vec<String>, node_url: String, path_ris: String)
         tempi.push(format!("{}", fine));                                       							// Salvataggio tempo misurato
 
         contatore += 1;                                                                                 // Incremento il contatore
-        if(contatore % 10) == 0                                                                         // Ogni 10 transazioni attaccate al Tangle
+        if(contatore % 10) == 0                                                                         // Ogni 10 messaggi scritti nel canale
         {
-            println!("--- {} messaggi attaccati al Tangle", contatore);                                 // Mostro un messaggio
+            println!("--- {} messaggi scritti nel canale", contatore);                                 	// Mostro un messaggio
         }
     }
-    println!("- Fine attaccamento messaggi al Tangle");
+    println!("- Fine scrittura messaggi nel canele");
 
-    scrivi_file(path_ris.clone(), tempi);                                                           	// Scrittura dei tempi misurati sul Tangle
-    println!("- Fine scrittura tempi nel file {}", path_ris.clone());
+    scrivi_file(path_ris_s.clone(), tempi);                                                           	// Scrittura dei tempi misurati nell'apposito file
+    println!("- Fine scrittura tempi nel file {}", path_ris_s.clone());
 
-    // -----------------------------------------------------------------------------
-    // Lato Subscriber -> Subscriber legge i messaggi appena pubblicati sul canale
+//////
+	// TEST 4 - LETTURA MESSAGGI STREAM
+//////
+
+    // Lato Subscriber -> Subscriber legge tutti i messaggi appena pubblicati sul canale
     
     println!("\n---------------------------------------");
     if node_url == String::from("https://api.lb-0.h.chrysalis-devnet.iota.cafe/")
     {
-        println!("\nTest 3 - Lettura delle transazioni Streams appena pubblicate sul Tangle - Devnet\n");
-        test_3(&coordinate, subscriber, String::from("./risultati/risultato_t3_devnet.csv")).await?;
+        println!("\nTest 4 - Lettura di tutti i messaggi Streams appena pubblicati nel canale privato - Devnet\n");
     }
     else if node_url == String::from("https://chrysalis-nodes.iota.org")
     {
-        println!("\nTest 3 - Lettura delle transazioni Streams appena pubblicate sul Tangle - Mainnet\n");
-        test_3(&coordinate, subscriber, String::from("./risultati/risultato_t3_mainnet.csv")).await?;
+        println!("\nTest 4 - Lettura di tutti i messaggi Streams appena pubblicati nel canale privato - Mainnet\n");
     }
+    test_4(&coordinate, subscriber, path_ris_l).await?;													// Eseguo il test 4									
 
     Ok(())
 }
