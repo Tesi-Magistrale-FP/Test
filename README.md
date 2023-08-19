@@ -12,18 +12,6 @@ Testare la scrittura e lettura di messaggi contenenti dati.
 ## [Test 3 e 4](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/test_3_4)
 Testare la scrittura e lettura di messaggi privati usando gli IOTA Streams.
 
-[## Informazioni sulle reti Devnet e Mainnet](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/info_net)
-Ottenere le informazioni dettagliate sui load-balancer (endpoint) e sulle relative reti (Mainnet e Devnet) della IOTA Foundation.
-
-[## DID e VC](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/identity)
-Gestione degli utenti tramite Decentralized Identity e Verifiable Credentials.
-
-[## Test 1 e 2](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/test_1_2)
-Testare la scrittura e lettura di messaggi contenenti dati.
-
-[## Test 3 e 4](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/test_3_4)
-Testare la scrittura e lettura di messaggi privati usando gli IOTA Streams.
-
 ## Hardware usato
 ### PC
 - <strong>CPU:</strong> Intel Core i7-7700HQ - 4 core @2.80 GHz
