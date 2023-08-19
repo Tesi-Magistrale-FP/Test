@@ -6,8 +6,6 @@ Test in cui si effettua la scrittura sul Tangle di 100 messaggi contenenti delle
 ## Test 2 - Lettura dei messaggi
 Test in cui si effettua la lettura dal Tangle dei 100 messaggi scritti precedentemente nel test 1. La lettura avviene per ogni singolo messaggio, sfruttando il suo indirizzo. La lettura avviene sia sulla Devnet sia sulla Mainnet. Per ogni lettura, viene misurato il tempo necessario per leggere il messaggio dal Tangle e accedere al suo contenuto.
 
-Il test è stato eseguito da <strong>PC</strong> sulla <strong>Mainnet</strong> e sulla <strong>Devnet</strong>.
-
 ### Riferimenti utili
 - [Scrivere un messaggio dati](https://wiki.iota.org/iota.rs/examples/data_message/)
 - [Leggere un messaggio dati](https://wiki.iota.org/iota.rs/examples/get_message_data/)
