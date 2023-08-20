@@ -22,7 +22,7 @@ async fn main() -> Result<()>
 
     println!("\n---------------------------------------");
     println!("\nTest 3 - Scrittura di {} messaggi Streams nel canale privato - Mainnet\n", NUM_MESSAGGI);
-    test_3::scrittura_messaggi_stream::test_3(coordinate.clone(), url_mainnet, String::from("./risultati/risultato_t3_mainnet.csv"), String::from("./risultati/risultato_t4_mainnet.csv")).await?;
+    //test_3::scrittura_messaggi_stream::test_3(coordinate.clone(), url_mainnet, String::from("./risultati/risultato_t3_mainnet.csv"), String::from("./risultati/risultato_t4_mainnet.csv")).await?;
 
     println!();
     Ok(())
