@@ -87,7 +87,7 @@ pub async fn test_3(coordinate: Vec<String>, node_url: String, path_ris_s: Strin
             println!("--- {} messaggi scritti nel canale", contatore);                                 	// Mostro un messaggio
         }
     }
-    println!("- Fine scrittura messaggi nel canele");
+    println!("- Fine scrittura messaggi nel canale");
 
     scrivi_file(path_ris_s.clone(), tempi);                                                           	// Scrittura dei tempi misurati nell'apposito file
     println!("- Fine scrittura tempi nel file {}", path_ris_s.clone());
