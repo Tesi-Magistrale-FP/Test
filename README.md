@@ -12,6 +12,9 @@ Testare la scrittura e lettura di messaggi contenenti dati.
 ## [Test 3 e 4](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/test_3_4)
 Testare la scrittura e lettura di messaggi privati usando gli IOTA Streams.
 
+## [Grafici](https://github.com/Tesi-Magistrale-FP/Test_IOTA/blob/main/grafici/Grafici_tesi_magistrale.ipynb)
+Analisi dei dati raccolti tramite i test e realizzazione dei relativi grafici.
+
 ## Hardware usato
 ### PC
 - <strong>CPU:</strong> Intel Core i7-7700HQ - 4 core @2.80 GHz
