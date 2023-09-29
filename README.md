@@ -7,10 +7,13 @@ Ottenere le informazioni dettagliate sui load-balancer (endpoint) e sulle relati
 Gestione degli utenti tramite Decentralized Identity e Verifiable Credentials.
 
 ## [Test 1 e 2](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/test_1_2)
-Testare la scrittura e lettura di messaggi contenenti dati.
+Testare la scrittura e lettura di transazioni semplici sul Tangle.
 
 ## [Test 3 e 4](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/test_3_4)
-Testare la scrittura e lettura di messaggi privati usando gli IOTA Streams.
+Testare la scrittura e lettura di messaggi sui canali IOTA Streams.
+
+## [Test 5 e 6](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/test_5_6)
+Testare la scrittura e lettura di messaggi sugli IOTA Smart Contracts.
 
 ## [Grafici](https://github.com/Tesi-Magistrale-FP/Test_IOTA/blob/main/grafici/Grafici_tesi_magistrale.ipynb)
 Analisi dei dati raccolti tramite i test e realizzazione dei relativi grafici.
