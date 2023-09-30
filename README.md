@@ -15,6 +15,9 @@ Testare la scrittura e lettura di messaggi sui canali IOTA Streams.
 ## [Test 5 e 6](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/test_5_6)
 Testare la scrittura e lettura di messaggi sugli IOTA Smart Contracts.
 
+## [Test 7 e 8](https://github.com/Tesi-Magistrale-FP/Test_IOTA/tree/main/test_7_8)
+Testare la scrittura e lettura di messaggi semplici o cifrati e autenticati su database per confrontare l'ecosistema decentralizzato con un ecosistema simile ma centralizzato.
+
 ## [Grafici](https://github.com/Tesi-Magistrale-FP/Test_IOTA/blob/main/grafici/Grafici_tesi_magistrale.ipynb)
 Analisi dei dati raccolti tramite i test e realizzazione dei relativi grafici.
 

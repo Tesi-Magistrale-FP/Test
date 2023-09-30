@@ -1,0 +1,17 @@
+[package]
+name = "test_7_8"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = "1.32.0"
+mongodb = "2.7.0"
+rand = "0.8.5"
+csv = "1.2.2"
+anyhow = "1.0.75"
+futures = "0.3.28"
+aes-gcm = "0.10.3"
+serde = { version = "1.0.188", features = ["derive"] }
+ed25519-dalek = { version = "2.0.0", features = ["rand_core"] }
