@@ -84,7 +84,7 @@ pub async fn test_8(coordinate: Vec<String>, path_ris_s: String, path_ris_l: Str
         
         let firma_digitale_s: String = unsafe { String::from_utf8_unchecked(testo_decifrato) };         // Ottengo la firma digitale
         let firma_digitale: Signature = Signature::from_str(&firma_digitale_s).unwrap();
-        let verifica_firma: bool = signing_key.verify(&valori[id as usize].as_bytes().to_vec(), &firma_digitale).is_ok();
+        let _verifica_firma: bool = signing_key.verify(&valori[id as usize].as_bytes().to_vec(), &firma_digitale).is_ok();
 
         let fine = inizio.elapsed().as_millis();                            							// Fine misurazione tempo                
         tempi.push(format!("{}", fine));                                       							// Salvataggio tempo registrato
