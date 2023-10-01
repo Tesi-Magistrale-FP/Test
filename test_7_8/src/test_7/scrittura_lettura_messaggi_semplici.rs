@@ -1,9 +1,16 @@
 use std::time::Instant;
 use anyhow::Result;
-use mongodb::{bson::{doc, Document}, options::{ClientOptions, ServerApi, ServerApiVersion}, Client};
+use mongodb::{bson::doc, options::{ClientOptions, ServerApi, ServerApiVersion}, Client};
 use futures::stream::TryStreamExt;
+use serde::{Deserialize, Serialize};
 
 use crate::utility::scrittura_file::scrivi_file;
+
+#[derive(Debug, Serialize, Deserialize)]
+struct Valore {																							// Struttura usata per organizzare i dati da archiviare sul database
+    id: String,
+    valore: String,
+}
 
 // Funzione per effettuare il test 7, che consiste nella misurazione del tempo necessario per scrivere e leggere dei messaggi semplici su database
 #[allow(unused_must_use)]
@@ -15,7 +22,7 @@ pub async fn test_7(coordinate: Vec<String>, path_ris_s: String, path_ris_l: Str
     client_options.server_api = Some(server_api);
     let client = Client::with_options(client_options)?;
     let db = client.database("Rust-DB");
-    let collection = db.collection::<Document>("testSemplice");
+    let collection = db.collection::<Valore>("testSemplice");
 
     // SCRITTURA DEI MESSAGGI SUL DATABASE
 
@@ -26,7 +33,8 @@ pub async fn test_7(coordinate: Vec<String>, path_ris_s: String, path_ris_l: Str
     {
         let inizio = Instant::now();                                                               		// Inizio misurazione tempo
         
-        collection.insert_one(doc! { "id": contatore.to_string(), "valore": valore }, None).await?;     // Scrittura messaggio sul database               
+        let valore_struct: Valore = Valore { id: contatore.to_string(), valore: valore.to_string() };				// Crea la struttura che conterrà i valori da salvare sul database
+        collection.insert_one(valore_struct, None).await?;                                   			// Scrittura messaggio sul database      
 
         let fine = inizio.elapsed().as_millis();                            							// Fine misurazione tempo                
         tempi.push(format!("{}", fine));                                       							// Salvataggio tempo registrato
@@ -53,8 +61,8 @@ pub async fn test_7(coordinate: Vec<String>, path_ris_s: String, path_ris_l: Str
 
         let mut cursor = collection.find(filter, None).await?;											// Ricerca di tutti i messaggi che rispettano il filtro impostato
 
-        let valore_doc: Document = cursor.try_next().await?.unwrap(); 									// Ottengo il valore del valore letto dal database
-        let _valore: String = valore_doc.get_str("valore").unwrap().to_string();
+        let valore_doc: Valore = cursor.try_next().await?.unwrap(); 									// Ottengo il valore del valore letto dal database
+        let _valore: String = valore_doc.valore;
 
         let fine = inizio.elapsed().as_millis();                            							// Fine misurazione tempo                
         tempi.push(format!("{}", fine));                                       							// Salvataggio tempo registrato

@@ -47,10 +47,8 @@ pub async fn test_8(coordinate: Vec<String>, path_ris_s: String, path_ris_l: Str
         
         let firma_digitale: Signature = signing_key.sign(valore.as_bytes().as_ref());                   // Firma digitale del valore con la chiave privata
         let firma_digitale_s: String = firma_digitale.to_string();
-        
         let testo_cifrato: Vec<u8> = cipher.encrypt(&nonce, firma_digitale_s.as_bytes().as_ref()).unwrap();		// Cifratura messaggi con chiave simmetrica		
         let valore_struct: Valore = Valore { id: contatore.to_string(), valore: testo_cifrato };				// Crea la struttura che conterrà i valori da salvare sul database
-        
         collection.insert_one(valore_struct, None).await?;                                   			// Scrittura messaggio sul database      
 
         let fine = inizio.elapsed().as_millis();                            							// Fine misurazione tempo                
@@ -87,7 +85,6 @@ pub async fn test_8(coordinate: Vec<String>, path_ris_s: String, path_ris_l: Str
         let firma_digitale_s: String = unsafe { String::from_utf8_unchecked(testo_decifrato) };         // Ottengo la firma digitale
         let firma_digitale: Signature = Signature::from_str(&firma_digitale_s).unwrap();
         let verifica_firma: bool = signing_key.verify(&valori[id as usize].as_bytes().to_vec(), &firma_digitale).is_ok();
-        println!("{verifica_firma}");
 
         let fine = inizio.elapsed().as_millis();                            							// Fine misurazione tempo                
         tempi.push(format!("{}", fine));                                       							// Salvataggio tempo registrato
