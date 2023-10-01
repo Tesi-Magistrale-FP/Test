@@ -20,7 +20,7 @@ async fn main() -> Result<()>
     println!("\n---------------------------------------");
     println!("\nTest 8 - Scrittura e lettura di {} messaggi cifrati e autenticati su database\n", NUM_MESSAGGI);
     test_8::scrittura_lettura_messaggi_ca::test_8(coordinate.clone(), String::from("./risultati/risultato_t8_scrittura.csv"), String::from("./risultati/risultato_t8_lettura.csv")).await?;
-    
+
     println!();
 
     Ok(())
